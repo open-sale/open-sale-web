@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Request;
+use App\Order;
 use Faker\Generator as Faker;
 
-$factory->define(Request::class, function (Faker $faker) {
+$factory->define(Order::class, function (Faker $faker) {
     return [
         //
     ];

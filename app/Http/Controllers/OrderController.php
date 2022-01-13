@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Request;
+use App\Order;
 use Illuminate\Http\Request;
 
-class RequestController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Request  $request
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Order $order)
     {
         //
     }
@@ -52,10 +52,10 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Request  $request
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Order $order)
     {
         //
     }
@@ -64,10 +64,10 @@ class RequestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Request  $request
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $request)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -75,10 +75,10 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Request  $request
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Order $order)
     {
         //
     }

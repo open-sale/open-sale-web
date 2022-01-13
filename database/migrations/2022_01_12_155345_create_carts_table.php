@@ -16,7 +16,7 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('request_id');
+            $table->foreignId('order_id');
             $table->string('delivery_address');
             $table->timestamp('delivery_date')->nullable();
             $table->tinyInteger('delivery_status')->nullable();
