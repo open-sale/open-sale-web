@@ -30,6 +30,13 @@ class Product extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['category_id'];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -45,11 +52,17 @@ class Product extends Model
      */
     protected $appends = [
         'image_path',
+        'category',
     ];
 
     public function getImagePathAttribute()
     {
         return uploads_path(self::IMAGE_PATH . $this->image);
+    }
+
+    public function getCategoryAttribute()
+    {
+        return $this->category()->first()->name;
     }
 
     public function category()
