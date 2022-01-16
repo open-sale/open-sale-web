@@ -62,7 +62,7 @@ class Product extends Model
 
     public function getCategoryAttribute()
     {
-        return $this->category()->first()->name;
+        return is_null($this->category()->first()) ? '' : $this->category()->first()->name;
     }
 
     public function category()
