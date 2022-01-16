@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return json_success(Product::get(['name', 'image', 'price']));
+        return json_success(ProductResource::collection(Product::get()));
     }
 
     /**
