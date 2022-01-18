@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
 Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+
+Route::post('login',[UserController::class,'login']);
