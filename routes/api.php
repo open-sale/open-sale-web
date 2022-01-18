@@ -16,7 +16,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
-Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    //All secure URL's
+    Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
+    Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+    Route::post('logout',[UserController::class,'logout']);
+});
 
-Route::post('login',[UserController::class,'login']);
+Route::post('/login',[UserController::class,'login']);
+Route::apiResource('/user', 'UserController');//->only(['index', 'show']);
