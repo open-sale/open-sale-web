@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
-Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    //All secure URL's
+    Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
+    Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+    Route::post('logout',[UserController::class,'logout']);
+});
+
+Route::post('/login',[UserController::class,'login']);
+Route::apiResource('/user', 'UserController');//->only(['index', 'show']);
