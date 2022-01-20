@@ -26,8 +26,12 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     // TODO: add previous carts
 });
 
-Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'store']);
 
 Route::apiResource('/category', 'CategoryController');//->only(['index', 'show']);
 Route::apiResource('/product', 'ProductController')->only(['index', 'show']);
+
+Route::controller('UserController')->group(function() {
+    Route::get('/login','visitor')->name('login');
+    Route::post('/login','login');
+});

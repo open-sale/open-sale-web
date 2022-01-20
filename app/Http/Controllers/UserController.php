@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserReqisterRequest;
+use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\User;
@@ -26,9 +26,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserReqisterRequest $request)
+    public function store(UserRegisterRequest $request)
     {
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -40,6 +39,7 @@ class UserController extends Controller
             'user' => $user,
             'token' => $token
         ];
+
         return json_success($respons, Response::HTTP_OK);
     }
 
@@ -61,26 +61,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserReqisterRequest $request, User $user)
+    public function update(UserRegisterRequest $request, User $user)
     {
-        return 1;
-        $user = $user->update($request->only('name'));
+
+        $user->update($request->only('name'));
 
         return json_success($user, Response::HTTP_OK);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        $user = $user->delete();
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy(User $user)
+    // {
+    //     $user->delete();
 
-        return json_success($user, Response::HTTP_OK);
-    }
+    //     return json_success($user, Response::HTTP_OK);
+    // }
 
 
     /**
@@ -115,5 +115,11 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();
+    }
+
+
+    public function visitor()
+    {
+        return json_success('Login please');
     }
 }
