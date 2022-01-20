@@ -23,5 +23,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('logout',[UserController::class,'logout']);
 });
 
-Route::post('/login',[UserController::class,'login']);
+Route::controller('UserController')->group(function() {
+    Route::get('/login','visitor')->name('login');
+    Route::post('/login','login');
+});
+
 Route::apiResource('/user', 'UserController');//->only(['index', 'show']);
