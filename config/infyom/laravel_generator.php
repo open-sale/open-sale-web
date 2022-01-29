@@ -39,7 +39,7 @@ return [
 
         'tests'             => base_path('tests/'),
 
-        'views'             => resource_path('views/admin/'),
+        'views'             => resource_path('views/'),
 
         'schema_files'      => resource_path('model_schemas/'),
 
@@ -156,7 +156,7 @@ return [
 
         'path' => 'admin',
 
-        'view' => '',  // using backend will create return view('backend.?.index') type the backend views directory
+        'view' => 'admin',  // using backend will create return view('backend.?.index') type the backend views directory
 
         'public' => '',
     ],
