@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group([
+    'prefix' => 'admin',
+    // 'as' => 'admin.',
+    'middleware' => \App\Http\Middleware\AdminMiddleware::class
+], function () {
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class, ["as" => 'admin']);
 });
