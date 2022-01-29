@@ -39,7 +39,7 @@ return [
 
         'tests'             => base_path('tests/'),
 
-        'views'             => resource_path('views/admin'),
+        'views'             => resource_path('views/admin/'),
 
         'schema_files'      => resource_path('model_schemas/'),
 
