@@ -16,3 +16,9 @@
         <span>Users</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('admin/carts*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.carts.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Carts</span>
+    </a>
+</li>
