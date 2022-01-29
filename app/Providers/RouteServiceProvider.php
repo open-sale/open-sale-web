@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -72,9 +73,33 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        $active_api_version = config('project.active-api-version', 'v1');
+
+        Route::prefix('api' . '/' . $active_api_version)
              ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+             ->group(base_path('routes/api_' . $active_api_version .'.php'));
+
+        Route::prefix('api' . '/' . $active_api_version)
+             ->middleware('api')
+             ->group(function () {
+                return $this->mapFallbackRoute();
+             });
+    }
+
+    /**
+     * Define the "fallback" route for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapFallbackRoute()
+    {
+        Route::fallback(function(){
+            return response()->json(
+                ['message' => 'Hm, why did you land here somehow!'],
+                Response::HTTP_NOT_FOUND
+            );
+        })->name('api.fallback.404');
     }
 }
