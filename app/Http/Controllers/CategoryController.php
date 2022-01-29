@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -38,8 +38,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($category)
     {
+        $category = Category::findOrFail($category);
         return json_success($category->products);
     }
 
