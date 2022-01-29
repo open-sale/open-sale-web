@@ -27,10 +27,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{uploads_path('open-sale.svg')}}" width="30" height="30"
-             alt="InfyOm Logo">
-        <img class="navbar-brand-minimized" src="{{uploads_path('open-sale.svg')}}" width="30"
-             height="30" alt="InfyOm Logo">
+        <img class="navbar-brand-full" src="{{uploads_path('open-sale.svg')}}" width="auto" height="42"
+             alt="OpenSale Logo">
+        <img class="navbar-brand-minimized" src="{{uploads_path('open-sale.svg')}}" width="auto"
+             height="42" alt="OpenSale Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
