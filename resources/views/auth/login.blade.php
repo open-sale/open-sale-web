@@ -21,14 +21,17 @@
 </head>
 <body class="app flex-row align-items-center">
 <div class="container">
+    <div class="row justify-content-center p-4">
+        <img src="{{uploads_path('open-sale.svg')}}" alt="Open Sale" width="256px">
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card-group">
                 <div class="card p-4">
                     <div class="card-body">
-                        <form method="post" action="{{ url('/login') }}">
+                        <form method="post" action="{{ url('/admin/login') }}">
                             @csrf
-                            <h1>Login</h1>
+                            <h1 style="color: #2b223f !important;">Login</h1>
                             <p class="text-muted">Sign In to your account</p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -62,7 +65,7 @@
                                     <button class="btn btn-primary px-4" type="submit">Login</button>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <a class="btn btn-link px-0" href="{{ url('/password/reset') }}">
+                                    <a class="btn btn-link px-0" href="{{ url('/admin/password/reset') }}">
                                         Forgot password?
                                     </a>
                                 </div>
@@ -70,13 +73,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%;background: #2b223f !important;">
                     <div class="card-body text-center">
                         <div>
-                            <h2>Sign up</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                                <a class="btn btn-primary active mt-3" href="{{ url('/register') }}">Register Now!</a>
+                            <h2 style="color: #f2cf69 !important;">Sign up</h2>
+                            <p>We've already crafted the store for web sailors just like you — freeing you to shop without walking in malls.</p>
+                                <a class="btn btn-primary active mt-3" href="{{ url('/admin/register') }}">Register Now!</a>
                         </div>
                     </div>
                 </div>
