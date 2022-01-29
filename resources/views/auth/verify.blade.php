@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-center p-4">
+            <img src="{{uploads_path('open-sale.svg')}}" alt="Open Sale" width="256px">
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8" style="margin-top: 2%">
                 <div class="card" style="width: 40rem;">
