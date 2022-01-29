@@ -19,7 +19,7 @@ return [
 
         'repository'        => app_path('Repositories/'),
 
-        'routes'            => base_path('routes/web.php'),
+        'routes'            => base_path('routes/admin.php'),
 
         'api_routes'        => base_path('routes/api.php'),
 
@@ -27,7 +27,7 @@ return [
 
         'api_request'       => app_path('Http/Requests/API/'),
 
-        'controller'        => app_path('Http/Controllers/'),
+        'controller'        => app_path('Http/Controllers/Admin'),
 
         'api_controller'    => app_path('Http/Controllers/API/'),
 
@@ -39,7 +39,7 @@ return [
 
         'tests'             => base_path('tests/'),
 
-        'views'             => resource_path('views/'),
+        'views'             => resource_path('views/admin'),
 
         'schema_files'      => resource_path('model_schemas/'),
 
@@ -69,7 +69,7 @@ return [
 
         'repository'        => 'App\Repositories',
 
-        'controller'        => 'App\Http\Controllers',
+        'controller'        => 'App\Http\Controllers\Admin',
 
         'api_controller'    => 'App\Http\Controllers\API',
 
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'templates'         => 'adminlte-templates',
+    'templates'         => 'coreui-templates',
 
     /*
     |--------------------------------------------------------------------------
@@ -136,7 +136,7 @@ return [
 
         'tables_searchable_default' => false,
 
-        'repository_pattern' => true,
+        'repository_pattern' => false,
 
         'resources' => false,
 
@@ -152,9 +152,9 @@ return [
 
     'prefixes' => [
 
-        'route' => '',  // using admin will create route('admin.?.index') type routes
+        'route' => 'admin',  // using admin will create route('admin.?.index') type routes
 
-        'path' => '',
+        'path' => 'admin',
 
         'view' => '',  // using backend will create return view('backend.?.index') type the backend views directory
 
@@ -172,9 +172,9 @@ return [
 
         'swagger'       => false,
 
-        'tests'         => true,
+        'tests'         => false,
 
-        'datatables'    => false,
+        'datatables'    => true,
 
         'menu'          => [
 
