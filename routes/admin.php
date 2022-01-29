@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group([
-    'prefix' => 'admin',
-    // 'as' => 'admin.',
-    'middleware' => \App\Http\Middleware\AdminMiddleware::class
-], function () {
-    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class, ["as" => 'admin']);
+$admin_route = ['prefix' => 'admin', 'as' => 'admin.'];
+$auth_admin_route = ['prefix' => 'admin', 'as' => 'admin.', 'middleware' => AdminMiddleware::class];
+
+Route::controller(UserController::class)->group($admin_route, function () {
+    Route::post('/register', 'register');
+    Route::get('/login', 'visitor')->name('login'); // redirect to if not authenticated
+    Route::post('/login', 'login');
+});
+
+Route::group($auth_admin_route, function () {
+    Route::resource('categories', CategoryController::class);
 });
