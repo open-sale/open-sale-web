@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Middleware\AdminMiddleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => AdminMiddleware::class]
+Route::group(['prefix' => 'admin', 'as' => 'admin.']
     , function () {
-    Route::resource('categories', CategoryController::class);
-    Route::resource('products', ProductController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('carts', CartController::class);
+        Auth::routes();
 });
+
+
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth']
+    , function () {
+        Route::get('home', [HomeController::class, 'index'])->name('home');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('products', ProductController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('carts', CartController::class);
+    }
+);
