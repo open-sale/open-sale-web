@@ -20,13 +20,16 @@
 </head>
 <body class="app flex-row align-items-center">
 <div class="container">
+    <div class="row justify-content-center p-4">
+        <img src="{{uploads_path('open-sale.svg')}}" alt="Open Sale" width="256px">
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mx-4">
                 <div class="card-body p-4">
-                    <form method="post" action="{{ url('/register') }}">
+                    <form method="post" action="{{ url('/admin/register') }}">
                         @csrf
-                        <h1>Register</h1>
+                        <h1 style="color: #2b223f !important;">Register</h1>
                         <p class="text-muted">Create your account</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -81,7 +84,7 @@
                             @endif
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                        <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
+                        <a href="{{ url('/admin/login') }}" class="text-center">I already have a membership</a>
                     </form>
                 </div>
             </div>
