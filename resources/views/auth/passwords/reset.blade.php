@@ -21,12 +21,15 @@
 </head>
 <body class="app flex-row align-items-center">
 <div class="container">
+    <div class="row justify-content-center p-4">
+        <img src="{{uploads_path('open-sale.svg')}}" alt="Open Sale" width="256px">
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mx-4">
                 <div class="card-body p-4">
                     @include('coreui-templates::common.errors')
-                    <form method="post" action="{{ url('/password/reset') }}">
+                    <form method="post" action="{{ url('/admin/password/reset') }}">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <h1>Reset Password</h1>
