@@ -24,23 +24,7 @@ class ApiRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            response()->json($validator->errors(), Response::HTTP_FORBIDDEN)
-        );
-    }
-
-    /**
-     * Handle a failed authorization attempt.
-     *
-     * @return void
-     *
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
-    protected function failedAuthorization()
-    {
-        throw new ApiException(
-            'This action is unauthorized.',
-            'Please, Check your permissions.',
-            Response::HTTP_UNAUTHORIZED
+            json_error('Invalid Data.', $validator->errors(), Response::HTTP_BAD_REQUEST)
         );
     }
 
