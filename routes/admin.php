@@ -12,3 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class, ["as" => 'admin']);
+});
