@@ -110,3 +110,5 @@ Take a look at every option:
 - ```--skip=model``` this is needed if you already have your own model implementation, if you don’t have any model in your project, this will generate a Model file for your table.
 
 php artisan infyom:scaffold --fromTable --tableName=categories --skip=model Category
+
+> ref: https://medium.com/swlh/setup-a-laravel-admin-dashboard-with-infyom-in-few-minutes-even-on-existing-projects-2f98ad263ee1
