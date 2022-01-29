@@ -17,13 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::controller(UserController::class)->group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::post('/register', 'register');
-    Route::get('/login', 'visitor')->name('login'); // redirect to if not authenticated
-    Route::post('/login', 'login');
-});
-
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => AdminMiddleware::class]
     , function () {
     Route::resource('categories', CategoryController::class);
+    Route::resource('products', ProductController::class);
 });

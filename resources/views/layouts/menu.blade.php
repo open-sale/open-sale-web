@@ -4,3 +4,9 @@
         <span>Categories</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('admin/products*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.products.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Products</span>
+    </a>
+</li>
