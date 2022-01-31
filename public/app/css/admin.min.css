@@ -1,7 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@1&display=swap');
-html,
+body {
+    background-color: white !important;
+}
+
 div,
 p,
 h1 {
     font-family: 'Space Mono', monospace !important;
+}
+
+@media (min-width: 992px) {
+    .brand-minimized .app-header .navbar-brand {
+        width: 155px;
+        background-color: transparent;
+    }
+}
+
+.sidebar .sidebar-minimizer,
+.sidebar {
+    background: #f0f4f7;
+    border-left: 1px solid #c8ced3;
+    border-right: 1px solid #c8ced3;
+}
+
+.sidebar .nav-link {
+    color: #3c4b64;
+}
+
+.sidebar .nav-link.active {
+    color: #54a9d8;
+    background: #f0f4f7;
+    border-left: 1px solid #c8ced3;
+    border-right: 3px solid #56add9;
+    /* margin-left: 1px; */
+}
+
+@media (min-width: 992px) {
+    .sidebar-minimized .sidebar .sidebar-minimizer {
+        position: fixed;
+        bottom: 0;
+        width: 50px;
+        height: 50px;
+        background-color: #c8ced3;
+    }
 }
