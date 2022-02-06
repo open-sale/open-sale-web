@@ -14,5 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('website/home');
+    return view('website.home.index');
+})->name('home');
+
+Route::get('/categories', function () {
+    return view('website.categories.index', ['categories' => \App\Models\Category::get()]);
+})->name('categories');
+
+Route::get('/categories/{id}', function ($id = 1) {
+    return view('website.products.index', ['products' => \App\Models\Product::where('category_id', $id)->get()]);
+})->name('category.product');
+
+Route::get('/shop', function () {
+    return view('website.products.index', ['products' => \App\Models\Product::get()]);
+})->name('shop');
+
+Route::get('/contact', function () {
+    return view('website.contact.index');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('website.about.index');
+})->name('about');
+
+Route::get('/welcome', function () {
+    return view('welcome');
 });
