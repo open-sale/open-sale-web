@@ -32,14 +32,22 @@ class FirebasePushNotification extends Notification
     protected $devices_id = [];
 
     /**
+     * The firebase topic name.
+     *
+     * @var array
+     */
+    protected $topic = '';
+
+    /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message, $devices_id = [])
+    public function __construct($message, $devices_id = [], $topic = '')
     {
         $this->message = $message;
         $this->devices_id = $devices_id;
+        $this->topic = $topic;
     }
 
     /**
@@ -61,13 +69,15 @@ class FirebasePushNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        if (empty($this->devices_id)) {
+        if (!empty($this->topic)) {
             return [
                 // pass your fcm topic name
-                'to' => '/topics/muathye',
+                'to' => '/topics//' . $this->topic ?? 'muathye',
                 'notification' => $this->message
             ];
-        } else {
+        }
+
+        if (!empty($this->devices_id)) {
             return [
                 // pass your user devices tokens
                 'registration_ids' => $this->devices_id,
@@ -84,13 +94,15 @@ class FirebasePushNotification extends Notification
      */
     public function toFcm($notifiable)
     {
-        if (empty($this->devices_id)) {
+        if (!empty($this->topic)) {
             return [
                 // pass your fcm topic name
-                'to' => '/topics/muathye',
+                'to' => '/topics//' . $this->topic ?? 'muathye',
                 'notification' => $this->message
             ];
-        } else {
+        }
+
+        if (!empty($this->devices_id)) {
             return [
                 // pass your user devices tokens
                 'registration_ids' => $this->devices_id,
