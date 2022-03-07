@@ -8,6 +8,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Log;
+/**
+ * Usage:
+ * 
+ * auth()->user()->notify(new \App\Notifications\FirebasePushNotification(
+ *             [
+ *                 'title' => 'title',
+ *                 'body' => 'body of topic notification',
+ *                 'image' => 'image',
+ *             ],
+ *             ['5464'],
+ *             'muathye'
+ *         ));
+ */
 
 class FirebasePushNotification extends Notification
 {
